@@ -9,7 +9,7 @@
 - Unsplash API Integration
 - Enhanced Search experience
 - JWT Authentication
-- infinite scrolling (or) pagination
+- pagination
 - Lazy Loading (and / or) other performance improvements
 - Masonary layout
 - Save Favourite Images
