@@ -1,5 +1,11 @@
 import express from "express";
-import { getAllImages } from "../controller/imageController";
+import {
+  getHomePageImages,
+  // getSearchResults,
+} from "../controller/imageController.js";
 const router = express.Router();
 
-router.get("/", getAllImages);
+router.get("/", getHomePageImages);
+// router.get("/:query", getSearchResults);
+
+export default router;
