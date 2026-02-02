@@ -1,5 +1,5 @@
 export const URL = process.env.UNSPLASH_URL;
-export const KEY = process.env.UNSPLASH_ACCESS_KEY;
+export const KEY = `Client-ID ${process.env.UNSPLASH_ACCESS_KEY}`;
 // THIS FUCKING TOOK ME 30mins TO CONFIGURE
 // FOR FUTURE REFERENCES
 // IT WAS DOTENV.CONFIG IN SERVER.JS
