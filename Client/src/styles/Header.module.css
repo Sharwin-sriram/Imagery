@@ -1,13 +1,45 @@
 header {
   width: 100%;
-  height: 4rem;
-  padding: 2rem;
+  height: 5em;
+  padding: 1em;
+  font-family: "Inter";
   display: flex;
   align-items: center;
+  user-select: none;
   align-content: center;
   justify-content: space-between;
 }
 
 .title {
   font-size: 2.5em;
+}
+
+.SearchBox {
+  min-width: 16em;
+  position: relative;
+  border: 1px solid currentColor;
+  border-radius: 7px;
+}
+
+.SearchBox > input {
+  width: 100%;
+  color: currentColor;
+  background: none;
+  padding: 7px;
+}
+
+.SearchBox > label {
+  position: absolute;
+  left: 10px;
+  top: 2px;
+  background: none;
+  z-index: -1;
+  font-size: 1.3em;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.SearchBox > input:not(:placeholder-shown) + label,
+.SearchBox > input:focus + label {
+  opacity: 0;
 }

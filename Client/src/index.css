@@ -8,6 +8,7 @@
   background-color: white;
   color: black;
   font-size: 16px;
+  overflow-x: hidden;
 }
 
 a {
@@ -19,15 +20,22 @@ li {
   list-style-type: none;
 }
 
+input,
+button {
+  background: none;
+  border: none;
+  outline: none;
+}
+
 h1 {
   font-size: 3em;
   font-family: "Inter";
   font-weight: 400;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     background-color: black;
     color: white;
   }
-}
+} */

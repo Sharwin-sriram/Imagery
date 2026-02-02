@@ -1,7 +1,6 @@
 import unsplash from "../config/unsplash.js";
 
 async function Extractor(data, ToSend) {
-  // console.log(data);
   data.forEach((dat) => {
     let { description } = dat;
     const { id, alt_description, urls, links, likes, user } = dat;
@@ -24,10 +23,9 @@ export async function getHomePageImages(req, res) {
     const ToSend = [];
     const data = response.data;
     await Extractor(data, ToSend);
-    // console.log(ToSend.length);
     res.status(200).json(ToSend);
   } catch (er) {
-    console.log("Error in getHomePageImages Controller:", er);
+    console.log("Error in getHomePageImages Controller", er);
     return res.status(501).json({ message: "Internal Server Error" });
   }
 }
@@ -41,7 +39,6 @@ export async function getSearchResults(req, res) {
     );
     const data = response.data;
     const toSend = [];
-    // console.log(data);
     const { total_pages, results } = data;
     toSend.push(total_pages);
     Extractor(results, toSend);
