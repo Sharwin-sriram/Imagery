@@ -8,7 +8,7 @@
 
 ### To get per search query
 
-- GET api/<query>
+- GET api/<search_query>
   > Example usage: GET api/cats
 
 ### With pages as a optional parameter
