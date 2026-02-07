@@ -1,10 +1,10 @@
-import { useState } from "react";
+import Primary from "@/ui/button/Primary";
+import { useTheme } from "@hooks/useTheme";
 import style from "@styles/Header.module.css";
+import { useState } from "react";
 
 function Header() {
-  const SwitchThemes = () => {};
-  const [darkmode, setDarkmode] = useState(false);
-
+  const [theme, themeToggle] = useTheme();
   return (
     <header>
       <div className={style.leftSection}>
@@ -16,7 +16,7 @@ function Header() {
         <label htmlFor="search">try anything...</label>
       </div>
       <div className={style.switchMode}>
-        <button onClick={SwitchThemes}></button>
+        <Primary content={"switch"} onClick={themeToggle} />
       </div>
     </header>
   );
