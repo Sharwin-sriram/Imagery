@@ -2,16 +2,15 @@ import { useEffect, useState } from "react";
 
 export function useTheme() {
   const preferred = window.matchMedia("(prefers-color-scheme: dark)");
-  const [theme, setTheme] = useState("");
+  const [theme, setTheme] = useState(() => {
+    const stored = localStorage.getItem("theme");
+    return stored || (preferred.matches ? "dark" : "light");
+  });
 
   useEffect(() => {
-    const stored = localStorage.getItem("theme");
-    if (stored) setTheme(stored);
-    else {
-      const systemTheme = preferred.matches ? "dark" : "light";
-      setTheme(systemTheme);
-      localStorage.setItem("theme", systemTheme);
-    }
+    const html = document.querySelector("html");
+    html.dataset["theme"] = theme;
+    document.documentElement.style.visibility = '';
   }, []);
 
   useEffect(() => {
