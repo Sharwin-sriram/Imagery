@@ -4,11 +4,27 @@
   box-sizing: border-box;
 }
 
+/* COLOR1: #cba88c,#c8a182,#c69a78,#c3936d,#c08c63 */
+/* COLOR2: #7364ac,#857cc2,#9895d9,#aeafe6,#c4caf2 */
+
 :root {
-  background-color: white;
-  color: black;
   font-size: 16px;
   overflow-x: hidden;
+}
+
+html[data-theme="light"] {
+  --background: white;
+  --color-primary: black;
+}
+
+html[data-theme="dark"] {
+  --background: black;
+  --color-primary: white;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--color-primary);
 }
 
 a {
@@ -25,6 +41,10 @@ button {
   background: none;
   border: none;
   outline: none;
+}
+
+button {
+  cursor: pointer;
 }
 
 h1 {
