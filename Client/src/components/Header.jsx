@@ -1,10 +1,10 @@
-import Primary from "@/ui/button/Primary";
+import Primary from "@ui/button/Primary";
 import { useTheme } from "@hooks/useTheme";
 import style from "@styles/Header.module.css";
-import { useState } from "react";
 
 function Header() {
   const [theme, themeToggle] = useTheme();
+  const size = 24;
   return (
     <header>
       <div className={style.leftSection}>
@@ -12,11 +12,23 @@ function Header() {
       </div>
       <div className={style.SearchBox}>
         <input type="text" id="search" placeholder=" " required />
-        {/* TODO: Typewriter effect dogs... cats... cars... anything... */}
+        {/* TODO: Typewriter effect try anything... dogs... cats... cars... anything... */}
         <label htmlFor="search">try anything...</label>
       </div>
       <div className={style.switchMode}>
-        <Primary content={"switch"} onClick={themeToggle} />
+        {theme === "light" ? (
+          <Primary
+            onClick={themeToggle}
+            icon={"iconamoon:mode-light-light"}
+            size={size}
+          />
+        ) : (
+          <Primary
+            onClick={themeToggle}
+            icon={"iconamoon:mode-dark-light"}
+            size={size}
+          />
+        )}
       </div>
     </header>
   );
