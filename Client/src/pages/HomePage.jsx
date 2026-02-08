@@ -1,8 +1,7 @@
-import Header from "@components/Header";
-import { Route, Routes } from "react-router-dom";
+import style from "@styles/pages/Home.module.css";
 
 function Home() {
-  return <></>;
+  return <section className={style.grid}></section>;
 }
 
 export default Home;

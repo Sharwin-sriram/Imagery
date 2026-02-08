@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import Header from "@components/Header";
 import Home from "@pages/HomePage";
 import Footer from "@components/Footer";
+import LoginPage from "@pages/LoginPage";
 
 function App() {
   return (
