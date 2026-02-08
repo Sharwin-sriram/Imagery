@@ -1,17 +1,17 @@
 header {
-  width: 100%;
-  height: 5em;
-  padding: 1em;
-  position: fixed;
-  top: 0;
   border-bottom: 1px solid currentColor;
-  /* border-radius: 0 0 6px 6px; */
+  justify-content: space-between;
+  backdrop-filter: blur(8px);
+  align-content: center;
   font-family: "Inter";
-  display: flex;
   align-items: center;
   user-select: none;
-  align-content: center;
-  justify-content: space-between;
+  position: fixed;
+  display: flex;
+  padding: 1em;
+  width: 100%;
+  height: 5em;
+  top: 0;
 }
 
 .title {
@@ -19,10 +19,10 @@ header {
 }
 
 .SearchBox {
-  min-width: 16em;
-  position: relative;
   border: 1px solid currentColor;
+  position: relative;
   border-radius: 7px;
+  min-width: 16em;
 }
 
 .SearchBox > input {

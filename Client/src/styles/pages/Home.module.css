@@ -1,7 +1,20 @@
-.grid {
-  display: grid;
+.HomePage {
+  padding: 6em 3em;
+  display: flex;
+  gap: 1em;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
-.grid-item {
-  width: 300px;
+.HomePage button {
+  background-color: aqua;
 }
+
+/* .Grid {
+  display: grid;
+  grid-template-rows: auto;
+}
+
+.item img{
+  width: 300px;
+} */
