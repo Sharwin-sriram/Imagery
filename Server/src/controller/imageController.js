@@ -2,12 +2,10 @@ import unsplash from "../config/unsplash.js";
 
 async function Extractor(data, ToSend) {
   data.forEach((dat) => {
-    let { description } = dat;
     const { id, alt_description, urls, links, likes, user } = dat;
-    if (!description) description = alt_description;
     const newData = {
       id,
-      description,
+      alt_description,
       image_urls: urls,
       download: links,
       likes,
@@ -19,7 +17,11 @@ async function Extractor(data, ToSend) {
 
 export async function getHomePageImages(req, res) {
   try {
-    const response = await unsplash.get("/photos");
+    const page = req.query.page;
+    const count = req.query.count || 20;
+    const response = await unsplash.get(
+      `/photos?page=${page}&per_page=${count}`,
+    );
     const ToSend = [];
     const data = response.data;
     await Extractor(data, ToSend);
