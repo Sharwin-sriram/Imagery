@@ -1,0 +1,8 @@
+.ImageCard img {
+  width: 100%;
+  display: block;
+}
+
+.description { 
+  padding: 0.5em 0;
+}
