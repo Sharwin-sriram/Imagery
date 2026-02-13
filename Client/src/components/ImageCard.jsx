@@ -1,11 +1,17 @@
 import style from "@styles/ImageCard.module.css";
 
-export default ({ description, download, image_urls, likes, user_data }) => {
-  const { full = undefined , raw, regular, small, small_s3, thumb } = image_urls;
+export default ({
+  description,
+  download,
+  image_urls = {},
+  likes,
+  user_data,
+}) => {
+  const { full = undefined, raw, regular, small, small_s3, thumb } = image_urls;
   return (
     <div className={style.ImageCard}>
-      <img src={regular} alt="" />
-      <div className={style.description}>{description}</div>
+      <img src={small} alt="" />
+      {/* <div className={style.description}>{description}</div> */}
     </div>
   );
 };

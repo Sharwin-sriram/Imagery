@@ -20,7 +20,7 @@ function Header({ setQuery }) {
           onChange={(e) =>
             setTimeout(() => {
               setQuery(e.target.value);
-            }, 1000)
+            }, 800)
           }
         />
         {/* TODO: Typewriter effect try anything... dogs... cats... cars... anything... */}
