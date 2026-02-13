@@ -11,13 +11,7 @@ export default () => {
     <>
       <Header setQuery={setQuery} />
       <section className={style.HomePage}>
-        <ResponsiveMasonry
-          columnsCountBreakPoints={{ 300: 2, 500: 3, 700: 4, 900: 5 }}
-        >
-          <Masonry gutter="20px">
-            <HomePage query={query} />
-          </Masonry>
-        </ResponsiveMasonry>
+        <HomePage query={query} />
       </section>
     </>
   );
@@ -62,20 +56,27 @@ function HomePage({ query }) {
     console.log(uniqueId);
   }, [uniqueId]);
 
-  const imags = images.map((image, index) => {
-    console.log(image);
-    const { id, description, download, image_urls, user_data, likes } = image;
-    return (
-      <ImageCard
-        description={description}
-        download={download}
-        image_urls={image_urls}
-        likes={likes}
-        user_data={user_data}
-        key={id}
-      />
-    );
-  });
-
-  return imags;
+  return (
+    <ResponsiveMasonry
+      columnsCountBreakPoints={{ 300: 2, 500: 3, 700: 4, 900: 5 }}
+    >
+      <Masonry gutter="20px">
+        {images.map((image) => {
+          if (image === undefined) return null;
+          const { id, description, download, image_urls, user_data, likes } =
+            image;
+          return (
+            <ImageCard
+              description={description}
+              download={download}
+              image_urls={image_urls}
+              likes={likes}
+              user_data={user_data}
+              key={id}
+            />
+          );
+        })}
+      </Masonry>
+    </ResponsiveMasonry>
+  );
 }
