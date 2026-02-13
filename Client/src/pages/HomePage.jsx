@@ -1,10 +1,12 @@
-import style from "@styles/pages/Home.module.css";
 import { useEffect, useState } from "react";
+import Header from "@/components/Header";
+import style from "@styles/pages/Home.module.css";
 import api from "@/lib/api.js";
+import ImageCard from "@/components/ImageCard";
 
-export default () => {
+function HomePage({ query }) {
   const [images, setImages] = useState([]);
-  const [query, setQuery] = useState("");
+  const [page, setPage] = useState(3);
   const [length, setLength] = useState(0);
 
   const uniqueId = new Set();
@@ -12,7 +14,9 @@ export default () => {
   const fetchData = async (query = "") => {
     try {
       const response =
-        query === "" ? await api.get(`/api`) : await api.get(`/api/${query}`);
+        query === ""
+          ? await api.get(`/api/?page=${page}`)
+          : await api.get(`/api/${query}?&page=${page}`);
       const data = response.data;
       setImages(data);
     } catch (er) {
@@ -21,6 +25,7 @@ export default () => {
   };
 
   useEffect(() => {
+    uniqueId.clear();
     fetchData(query);
   }, [query]);
 
@@ -31,18 +36,41 @@ export default () => {
       if (image === undefined) return null;
       const { id } = image;
       uniqueId.add(id);
-      console.log(uniqueId);
     });
   }, [images]);
+
+  useEffect(() => {
+    console.log(uniqueId);
+  }, [uniqueId]);
 
   return (
     <section className={style.HomePage}>
       <button onClick={() => setQuery("cats")}>CLICK ME</button>
       <div className={style.Grid}>
         {images.map((image, index) => {
-          if (query !== "" && index === 0) return null;
+          console.log(image);
+          const { description, download, image_urls, user_data, likes } = image;
+          return (
+            <ImageCard
+              description={description}
+              download={download}
+              image_urls={image_urls}
+              likes={likes}
+              user_data={user_data}
+            />
+          );
         })}
       </div>
     </section>
+  );
+}
+
+export default () => {
+  const [query, setQuery] = useState("");
+  return (
+    <>
+      <Header setQuery={setQuery} />
+      <HomePage query={query} />
+    </>
   );
 };

@@ -1,8 +1,9 @@
 import Primary from "@ui/button/Primary";
 import { useTheme } from "@hooks/useTheme";
 import style from "@styles/Header.module.css";
+import { useEffect, useState } from "react";
 
-function Header() {
+function Header({ setQuery }) {
   const [theme, themeToggle] = useTheme();
   const size = 24;
   return (
@@ -11,7 +12,17 @@ function Header() {
         <h1>Imagery</h1>
       </div>
       <div className={style.SearchBox}>
-        <input type="text" id="search" placeholder=" " required />
+        <input
+          type="text"
+          id="search"
+          placeholder=" "
+          required
+          onChange={(e) =>
+            setTimeout(() => {
+              setQuery(e.target.value);
+            }, 1000)
+          }
+        />
         {/* TODO: Typewriter effect try anything... dogs... cats... cars... anything... */}
         <label htmlFor="search">try anything...</label>
       </div>
