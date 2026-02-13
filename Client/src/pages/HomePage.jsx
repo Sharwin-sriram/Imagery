@@ -28,17 +28,17 @@ function HomePage({ query }) {
     try {
       const response =
         query === ""
-          ? await api.get(`/api/?page=${page}`)
-          : await api.get(`/api/${query}?&page=${page}`);
+          ? await api.get(`/?page=${page}`)
+          : await api.get(`/${query}&?page=${page}`);
+      console.log(response);
       const data = response.data;
       setImages(data);
     } catch (er) {
-      console.log("Error while fetching", er);
+      console.log("Error while fetching", er.message);
     }
   };
 
   useEffect(() => {
-    uniqueId.clear();
     fetchData(query);
   }, [query]);
 
@@ -58,7 +58,7 @@ function HomePage({ query }) {
 
   return (
     <ResponsiveMasonry
-      columnsCountBreakPoints={{ 300: 2, 500: 3, 700: 4, 900: 5 }}
+      columnsCountBreakPoints={{ 250: 1, 350: 2, 500: 2, 700: 3, 900: 4 }}
     >
       <Masonry gutter="20px">
         {images.map((image) => {
