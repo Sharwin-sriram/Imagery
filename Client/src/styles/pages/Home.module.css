@@ -1,9 +1,5 @@
 .HomePage {
   padding: 6em 3em;
-  display: flex;
-  gap: 1em;
-  justify-content: center;
-  flex-wrap: wrap;
 }
 
 .HomePage button {

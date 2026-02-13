@@ -3,10 +3,29 @@ import Header from "@/components/Header";
 import style from "@styles/pages/Home.module.css";
 import api from "@/lib/api.js";
 import ImageCard from "@/components/ImageCard";
+import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
+
+export default () => {
+  const [query, setQuery] = useState("");
+  return (
+    <>
+      <Header setQuery={setQuery} />
+      <section className={style.HomePage}>
+        <ResponsiveMasonry
+          columnsCountBreakPoints={{ 300: 2, 500: 3, 700: 4, 900: 5 }}
+        >
+          <Masonry gutter="20px">
+            <HomePage query={query} />
+          </Masonry>
+        </ResponsiveMasonry>
+      </section>
+    </>
+  );
+};
 
 function HomePage({ query }) {
   const [images, setImages] = useState([]);
-  const [page, setPage] = useState(3);
+  const [page, setPage] = useState(1);
   const [length, setLength] = useState(0);
 
   const uniqueId = new Set();
@@ -43,34 +62,20 @@ function HomePage({ query }) {
     console.log(uniqueId);
   }, [uniqueId]);
 
-  return (
-    <section className={style.HomePage}>
-      <button onClick={() => setQuery("cats")}>CLICK ME</button>
-      <div className={style.Grid}>
-        {images.map((image, index) => {
-          console.log(image);
-          const { description, download, image_urls, user_data, likes } = image;
-          return (
-            <ImageCard
-              description={description}
-              download={download}
-              image_urls={image_urls}
-              likes={likes}
-              user_data={user_data}
-            />
-          );
-        })}
-      </div>
-    </section>
-  );
-}
+  const imags = images.map((image, index) => {
+    console.log(image);
+    const { id, description, download, image_urls, user_data, likes } = image;
+    return (
+      <ImageCard
+        description={description}
+        download={download}
+        image_urls={image_urls}
+        likes={likes}
+        user_data={user_data}
+        key={id}
+      />
+    );
+  });
 
-export default () => {
-  const [query, setQuery] = useState("");
-  return (
-    <>
-      <Header setQuery={setQuery} />
-      <HomePage query={query} />
-    </>
-  );
-};
+  return imags;
+}
