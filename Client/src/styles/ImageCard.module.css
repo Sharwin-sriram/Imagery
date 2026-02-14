@@ -3,6 +3,14 @@
   display: block;
 }
 
-.description { 
+.description {
   padding: 0.5em 0;
+}
+
+.ImageCard {
+  cursor: pointer;
+  transition: all 0.4s ease;
+  &:hover {
+    filter: brightness(70%);
+  }
 }
