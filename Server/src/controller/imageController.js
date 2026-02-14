@@ -36,8 +36,10 @@ export async function getSearchResults(req, res) {
   try {
     const { query } = req.params;
     const page = req.query.page || 1;
+    const count = req.query.count || 20;
+
     const response = await unsplash.get(
-      `/search/photos?query=${query}&page=${page}`,
+      `/search/photos?query=${query}&page=${page}&per_page=${count}`,
     );
     const data = response.data;
     const toSend = [];
